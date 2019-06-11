@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!--加载配置文件，为下面读取数据库信息准备 -->
+	<properties resource="application.properties" />
+	<!-- 
+		https://blog.csdn.net/isea533/article/details/42102297
+		https://www.cnblogs.com/ygjlch/p/6471924.html
+	    context:生成一组对象的环境 
+	    id:必选，上下文id，用于在生成错误时提示
+	    defaultModelType:指定生成对象的样式
+	        1，conditional：类似hierarchical；
+	        2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+	        3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
+	    targetRuntime:
+	        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+	        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+	    introspectedColumnImpl：类全限定名，用于扩展MBG
+	-->
+	<context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers" value="com.zxf.gsjlpt.common.MyMapper" />
+			<!--caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+			<property name="caseSensitive"  value="true" />
+			<!-- 生成一对一配置 -->
+		</plugin>
+<!--		<plugin type="cc.bandaotixi.plugins.OneToOnePlugin" />
+		&lt;!&ndash; 生成一对多配置 &ndash;&gt;
+		<plugin type="cc.bandaotixi.plugins.OneToManyPlugin" />
+		&lt;!&ndash; 生成批量配置 &ndash;&gt;
+		<plugin type="cc.bandaotixi.plugins.BatchInsertPlugin" />
+		<plugin type="cc.bandaotixi.plugins.BatchUpdatePlugin" />-->
+		<!-- 阻止生成自动注释 -->
+		<commentGenerator>
+			<property name="javaFileEncoding" value="UTF-8" />
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库链接地址账号密码 -->
+		<jdbcConnection
+			driverClass="${spring.datasource.driverClassName}"
+			connectionURL="${spring.datasource.url}"
+			userId="${spring.datasource.username}"
+			password="${spring.datasource.password}">
+		</jdbcConnection>
+		
+		<!-- 这个元素的配置用来指定JDBC类型和Java类型如何转换 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="com.zxf.gsjlpt.model" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!--生成Dao类存放位置 -->
+		<!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码 type="ANNOTATEDMAPPER",生成Java Model 
+			和基于注解的Mapper对象 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.zxf.gsjlpt.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!--生成对应表及类名 去掉Mybatis Generator生成的一堆 example -->
+        <table tableName="sys_user"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="uid" sqlStatement="Mysql"  identity="true" />
+        </table>
+        <table tableName="sys_roles"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql"  identity="true" />
+        </table>
+        <table tableName="sys_permissions"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="Mysql"  identity="true" />
+        </table>
+		<table tableName="sys_users_roles"
+			enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql"  identity="true" />
+           <!-- <oneToOne mappingTable="sys_users" column="user_id" joinColumn="uid"/>-->
+		</table>
+		<table tableName="sys_roles_permissions"
+			enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql"  identity="true" />
+		</table>
+		<table tableName="repair"
+			enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="rid" sqlStatement="Mysql"  identity="true" />
+		</table>
+        <table tableName="message"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="mid" sqlStatement="Mysql"  identity="true" />
+        </table>
+        <table tableName="complaint"
+               enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="cid" sqlStatement="Mysql"  identity="true" />
+        </table>
+	</context>
+</generatorConfiguration>

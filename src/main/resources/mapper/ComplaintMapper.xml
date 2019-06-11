@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxf.gsjlpt.mapper.ComplaintMapper">
+  <resultMap id="BaseResultMap" type="com.zxf.gsjlpt.model.Complaint">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="cnumber" jdbcType="VARCHAR" property="cnumber" />
+    <result column="ccontent" jdbcType="VARCHAR" property="ccontent" />
+    <result column="cstate" jdbcType="VARCHAR" property="cstate" />
+    <result column="creplay" jdbcType="VARCHAR" property="creplay" />
+    <result column="cuid" jdbcType="VARCHAR" property="cuid" />
+    <result column="cruid" jdbcType="VARCHAR" property="cruid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    cid, cnumber, ccontent, cstate, creplay, cuid, cruid, create_time, update_time
+  </sql>
+</mapper>

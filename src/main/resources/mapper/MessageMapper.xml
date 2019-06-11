@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxf.gsjlpt.mapper.MessageMapper">
+  <resultMap id="BaseResultMap" type="com.zxf.gsjlpt.model.Message">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="mid" jdbcType="VARCHAR" property="mid" />
+    <result column="mnumber" jdbcType="VARCHAR" property="mnumber" />
+    <result column="mcontent" jdbcType="VARCHAR" property="mcontent" />
+    <result column="mstate" jdbcType="VARCHAR" property="mstate" />
+    <result column="mreplay" jdbcType="VARCHAR" property="mreplay" />
+    <result column="muid" jdbcType="VARCHAR" property="muid" />
+    <result column="mruid" jdbcType="VARCHAR" property="mruid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    mid, mnumber, mcontent, mstate, mreplay, muid, mruid, create_time, update_time
+  </sql>
+
+  <sql id="base_select">
+      SELECT *
+      FROM message
+  </sql>
+
+  <select id="findAll" resultMap="BaseResultMap">
+      <include refid="base_select"></include>
+  </select>
+</mapper>

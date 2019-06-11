@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxf.gsjlpt.mapper.RepairMapper">
+  <resultMap id="BaseResultMap" type="com.zxf.gsjlpt.model.Repair">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="rid" jdbcType="VARCHAR" property="rid" />
+    <result column="rnumber" jdbcType="VARCHAR" property="rnumber" />
+    <result column="rcontent" jdbcType="VARCHAR" property="rcontent" />
+    <result column="rstate" jdbcType="VARCHAR" property="rstate" />
+    <result column="rreplay" jdbcType="VARCHAR" property="rreplay" />
+    <result column="ruid" jdbcType="VARCHAR" property="ruid" />
+    <result column="rruid" jdbcType="VARCHAR" property="rruid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    rid, rnumber, rcontent, rstate, rreplay, ruid, rruid, create_time, update_time
+  </sql>
+</mapper>
